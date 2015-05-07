@@ -20,7 +20,6 @@ class Metric:
 
         for (unit, metrics) in self._metrics.items():
             cw.put_metric_data('EC2', metrics.keys(), metrics.values(), unit=unit, dimensions={"InstanceId": instance_id})
-            print
 
 if __name__ == '__main__':
 
