@@ -14,8 +14,7 @@ class Metric:
         self._metrics[unit].update({key: value})
 
     def _get_auto_scaling_group_name(self, instance_id, region):
-        conn = boto.ec2.autoscale.AutoScaleConnection()
-        boto.ec2.autoscale.connect_to_region(region)
+        conn = boto.ec2.autoscale.connect_to_region(region)
         groups = conn.get_all_autoscaling_instances([instance_id])
         return groups[0].group_name if len(groups) > 0 else None
 
